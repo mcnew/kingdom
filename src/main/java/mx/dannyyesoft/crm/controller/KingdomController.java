@@ -55,7 +55,7 @@ public class KingdomController {
 
 	@ApiOperation("Kingdom update")
 	@RequestMapping(path = "{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Void> update(@ApiParam("The id") @PathVariable("id") Integer kingdomId,
+	public ResponseEntity<Void> update(@PathVariable("id") Integer kingdomId,
 			@RequestBody KingdomUpdateRequest request) {
 		Integer id = kingdomService.update(kingdomId, request);
 		if (id == null) {
