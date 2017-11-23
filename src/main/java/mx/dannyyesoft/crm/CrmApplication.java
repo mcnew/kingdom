@@ -15,7 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableSwagger2
-@ComponentScan("mx.dannyyesoft.crm.controller")
+@ComponentScan({ "mx.dannyyesoft.crm", "mx.dannyyesoft.crm.service", "mx.dannyyesoft.crm.repository" })
 public class CrmApplication {
 
 	public static void main(String[] args) {
