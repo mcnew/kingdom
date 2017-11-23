@@ -17,12 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import mx.dannyyesoft.crm.controller.request.KingdomCreationRequest;
 import mx.dannyyesoft.crm.controller.request.KingdomUpdateRequest;
 import mx.dannyyesoft.crm.controller.response.KingdomListResponse;
 import mx.dannyyesoft.crm.controller.response.KingdomReadResponse;
 import mx.dannyyesoft.crm.service.KingdomService;
 
+@RequestMapping("/kingdom")
 @RestController
 public class KingdomController {
 
@@ -35,8 +37,8 @@ public class KingdomController {
 		this.kingdomService = kingdomService;
 	}
 
-	@ApiOperation("Kingdom list")
-	@RequestMapping(path = "/kingdom", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ApiOperation(value = "Kingdom list", response = KingdomListResponse.class)
+	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
 	public ResponseEntity<Collection<KingdomListResponse>> list() {
 		Collection<KingdomListResponse> collection = kingdomService.findAll();
@@ -44,7 +46,7 @@ public class KingdomController {
 	}
 
 	@ApiOperation("Kingdom creation")
-	@RequestMapping(path = "/kingdom", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<Void> create(@RequestBody KingdomCreationRequest request, UriComponentsBuilder ucBuilder) {
 		Integer id = kingdomService.create(request);
 		URI location = ucBuilder.path("/kingdom/{id}").buildAndExpand(id).toUri();
@@ -52,8 +54,8 @@ public class KingdomController {
 	}
 
 	@ApiOperation("Kingdom update")
-	@RequestMapping(path = "/kingdom/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Void> update(@PathVariable("id") Integer kingdomId,
+	@RequestMapping(path = "{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<Void> update(@ApiParam("The id") @PathVariable("id") Integer kingdomId,
 			@RequestBody KingdomUpdateRequest request) {
 		Integer id = kingdomService.update(kingdomId, request);
 		if (id == null) {
@@ -64,7 +66,7 @@ public class KingdomController {
 	}
 
 	@ApiOperation("Kingdom creation")
-	@RequestMapping(value = "/kingdom/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
 	public ResponseEntity<KingdomReadResponse> read(@PathVariable("id") Integer kingdomId) {
 		LOGGER.trace("{}", kingdomId);
