@@ -66,7 +66,7 @@ public class KingdomController {
 		}
 	}
 
-	@ApiOperation("Kingdom creation")
+	@ApiOperation("Kingdom detail")
 	@RequestMapping(value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
 	public ResponseEntity<KingdomReadResponse> read(

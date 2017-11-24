@@ -1,0 +1,6 @@
+CREATE TABLE kingdom (
+	id INTEGER NOT NULL AUTO_INCREMENT,
+	name VARCHAR(55) NOT NULL,
+	description VARCHAR(255),
+	PRIMARY KEY(id)
+);
