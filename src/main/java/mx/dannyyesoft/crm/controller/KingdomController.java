@@ -55,7 +55,8 @@ public class KingdomController {
 
 	@ApiOperation("Kingdom update")
 	@RequestMapping(path = "{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Void> update(@PathVariable("id") Integer kingdomId,
+	public ResponseEntity<Void> update(
+			@ApiParam(value = "The id", required = true) @PathVariable("id") Integer kingdomId,
 			@RequestBody KingdomUpdateRequest request) {
 		Integer id = kingdomService.update(kingdomId, request);
 		if (id == null) {
@@ -68,7 +69,8 @@ public class KingdomController {
 	@ApiOperation("Kingdom creation")
 	@RequestMapping(value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
-	public ResponseEntity<KingdomReadResponse> read(@PathVariable("id") Integer kingdomId) {
+	public ResponseEntity<KingdomReadResponse> read(
+			@ApiParam(value = "The id", required = true) @PathVariable("id") Integer kingdomId) {
 		LOGGER.trace("{}", kingdomId);
 		KingdomReadResponse response = kingdomService.findById(kingdomId);
 		if (response == null) {
