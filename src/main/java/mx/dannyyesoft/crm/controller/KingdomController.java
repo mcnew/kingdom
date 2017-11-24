@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import mx.dannyyesoft.crm.controller.request.KingdomCreationRequest;
@@ -24,6 +25,7 @@ import mx.dannyyesoft.crm.controller.response.KingdomListResponse;
 import mx.dannyyesoft.crm.controller.response.KingdomReadResponse;
 import mx.dannyyesoft.crm.service.KingdomService;
 
+@Api("kingdom CRUD")
 @RequestMapping("/kingdom")
 @RestController
 public class KingdomController {
