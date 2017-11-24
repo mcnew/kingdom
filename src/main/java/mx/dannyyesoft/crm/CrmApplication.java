@@ -29,7 +29,7 @@ public class CrmApplication {
 	}
 
 	private ApiInfo apiInfo() {
-		return new ApiInfoBuilder().title("Spring REST Sample with Swagger")
+		return new ApiInfoBuilder().title("Spring REST Sample with Swagger").version("1.0")
 				.description("Spring REST Sample with Swagger")
 				// .termsOfServiceUrl("http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm?Open")
 				.contact("www.dannyyesoft.mx").license("Todos los derechos reservados")
