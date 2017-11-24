@@ -3,10 +3,10 @@ package mx.dannyyesoft.crm.controller.request;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(value = "KingdomCreation")
+@ApiModel(value = "Creacion")
 public class KingdomCreationRequest extends KingdomUpdateRequest {
 
-	@ApiModelProperty(required = true)
+	@ApiModelProperty(value = "El nombre", required = true)
 	private String name;
 
 	/**

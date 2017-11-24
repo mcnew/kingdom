@@ -1,9 +1,15 @@
 package mx.dannyyesoft.crm.controller.response;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel("Listado")
 public class KingdomListResponse {
 
+	@ApiModelProperty(value = "El id", required = true)
 	private Integer id;
 
+	@ApiModelProperty(value = "El nombre", required = true)
 	private String name;
 
 	/**

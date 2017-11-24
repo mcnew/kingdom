@@ -37,15 +37,14 @@ public class KingdomController {
 		this.kingdomService = kingdomService;
 	}
 
-	@ApiOperation(value = "Kingdom list", response = KingdomListResponse.class)
+	@ApiOperation(value = "Listado", response = KingdomListResponse.class)
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
 	public ResponseEntity<Collection<KingdomListResponse>> list() {
-		Collection<KingdomListResponse> collection = kingdomService.findAll();
-		return ResponseEntity.ok(collection);
+		return ResponseEntity.ok(kingdomService.findAll());
 	}
 
-	@ApiOperation("Kingdom creation")
+	@ApiOperation("Alta")
 	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<Void> create(@RequestBody KingdomCreationRequest request, UriComponentsBuilder ucBuilder) {
 		Integer id = kingdomService.create(request);
@@ -53,7 +52,7 @@ public class KingdomController {
 		return ResponseEntity.created(location).build();
 	}
 
-	@ApiOperation("Kingdom update")
+	@ApiOperation("Actualizacion")
 	@RequestMapping(path = "{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<Void> update(
 			@ApiParam(value = "The id", required = true) @PathVariable("id") Integer kingdomId,
@@ -66,7 +65,7 @@ public class KingdomController {
 		}
 	}
 
-	@ApiOperation("Kingdom detail")
+	@ApiOperation("Detalle")
 	@RequestMapping(value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
 	public ResponseEntity<KingdomReadResponse> read(
